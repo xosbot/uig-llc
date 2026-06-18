@@ -26,6 +26,8 @@ const links = {
 export default function Footer() {
   return (
     <footer
+      role="contentinfo"
+      aria-label="Site footer"
       style={{
         background: "#0A0F1E",
         borderTop: "1px solid rgba(255,255,255,0.04)",
@@ -176,6 +178,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <a
                 href="#"
+                aria-label="United Investing Group on LinkedIn"
                 style={{
                   color: "rgba(255,255,255,0.4)",
                   fontSize: "0.85rem",
@@ -189,6 +192,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
+                aria-label="United Investing Group on Twitter"
                 style={{
                   color: "rgba(255,255,255,0.4)",
                   fontSize: "0.85rem",

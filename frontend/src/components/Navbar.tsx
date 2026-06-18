@@ -35,7 +35,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[72px]">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 no-underline group">
+        <Link href="/" className="flex items-center gap-3 no-underline group" aria-label="United Investing Group — Home">
           <div
             className="transition-transform duration-300 group-hover:scale-105"
             style={{
@@ -89,15 +89,13 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="nav-link">
               {item.label}
             </Link>
           ))}
-        </div>
-
-        {/* Desktop CTA */}
+        </nav>
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/contact"
@@ -113,6 +111,8 @@ export default function Navbar() {
         <button
           className="md:hidden"
           onClick={() => setOpen(!open)}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={open}
           style={{
             background: "none",
             border: "none",
@@ -127,8 +127,10 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div
+        <nav
           className="md:hidden px-6 pb-6 pt-4 flex flex-col gap-1"
+          aria-label="Mobile navigation"
+          role="menu"
           style={{
             background: "rgba(10,15,30,0.98)",
             borderTop: "1px solid rgba(255,255,255,0.06)",
@@ -153,7 +155,7 @@ export default function Navbar() {
             Get in Touch
             <ArrowRight size={14} />
           </Link>
-        </div>
+        </nav>
       )}
     </nav>
   );
