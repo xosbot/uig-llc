@@ -1,67 +1,241 @@
 "use client";
 import Link from "next/link";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+
+const links = {
+  company: [
+    { label: "About Us", href: "/about" },
+    { label: "Services", href: "/services" },
+    { label: "Portfolio", href: "/portfolio" },
+    { label: "Contact", href: "/contact" },
+  ],
+  verticals: [
+    "Real Estate",
+    "Technology Solutions",
+    "Human Resources",
+    "Investment Advisory",
+    "International Trade",
+    "Energy & Infrastructure",
+  ],
+  legal: [
+    { label: "Privacy Policy", href: "/privacy" },
+    { label: "Terms of Service", href: "/terms" },
+  ],
+};
 
 export default function Footer() {
   return (
-    <footer style={{ background: "#060D1F", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3 mb-4">
-              <div style={{ width: 32, height: 32, borderRadius: 8, background: "linear-gradient(135deg,#1D4ED8,#3B82F6)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ color: "white", fontWeight: 800, fontSize: "0.75rem", fontFamily: "Space Grotesk, sans-serif" }}>UIG</span>
+    <footer
+      style={{
+        background: "#0A0F1E",
+        borderTop: "1px solid rgba(255,255,255,0.04)",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          {/* Brand — 5 cols */}
+          <div className="lg:col-span-5">
+            <div className="flex items-center gap-3 mb-5">
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 12,
+                  background: "linear-gradient(135deg,#1E40AF,#3B82F6)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 12px rgba(30,64,175,0.3)",
+                }}
+              >
+                <span
+                  style={{
+                    color: "white",
+                    fontWeight: 800,
+                    fontSize: "0.8rem",
+                    fontFamily: "Space Grotesk, sans-serif",
+                  }}
+                >
+                  UIG
+                </span>
               </div>
-              <span style={{ color: "white", fontWeight: 800, fontSize: "1rem", fontFamily: "Space Grotesk, sans-serif" }}>United Investing Group</span>
+              <div>
+                <span
+                  style={{
+                    color: "white",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    fontFamily: "Space Grotesk, sans-serif",
+                  }}
+                >
+                  United Investing Group
+                </span>
+              </div>
             </div>
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", lineHeight: 1.7, maxWidth: 320, marginBottom: 20 }}>
-              A global investment and technology company building value across real estate, technology, human resources, and international trade.
+            <p
+              style={{
+                color: "rgba(255,255,255,0.4)",
+                fontSize: "0.875rem",
+                lineHeight: 1.8,
+                maxWidth: 340,
+                marginBottom: 24,
+              }}
+            >
+              A diversified investment and technology company building value
+              across real estate, technology, human resources, and international
+              trade. Connecting India with the global economy.
             </p>
-            <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.75rem" }}>
-              Registered in Wyoming, USA
-            </p>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 style={{ color: "white", fontWeight: 700, fontSize: "0.85rem", marginBottom: 16, letterSpacing: "0.05em" }}>COMPANY</h4>
             <div className="flex flex-col gap-3">
-              <Link href="/about" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>About Us</Link>
-              <Link href="/services" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>Services</Link>
-              <Link href="/portfolio" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>Portfolio</Link>
-              <Link href="/contact" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>Contact</Link>
+              <div className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.8rem" }}>
+                <MapPin size={14} />
+                <span>Wyoming, USA · Delhi NCR · Mumbai · Bengaluru</span>
+              </div>
+              <div className="flex items-center gap-2" style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.8rem" }}>
+                <Mail size={14} />
+                <span>contact@uigllc.org</span>
+              </div>
             </div>
           </div>
 
-          {/* Verticals */}
-          <div>
-            <h4 style={{ color: "white", fontWeight: 700, fontSize: "0.85rem", marginBottom: 16, letterSpacing: "0.05em" }}>VERTICALS</h4>
+          {/* Company — 2 cols */}
+          <div className="lg:col-span-2">
+            <h4
+              style={{
+                color: "rgba(255,255,255,0.5)",
+                fontWeight: 700,
+                fontSize: "0.7rem",
+                marginBottom: 20,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}
+            >
+              Company
+            </h4>
             <div className="flex flex-col gap-3">
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>Real Estate</span>
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>Technology</span>
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>Human Resources</span>
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>Investment Advisory</span>
-              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem" }}>International Trade</span>
+              {links.company.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  style={{
+                    color: "rgba(255,255,255,0.4)",
+                    fontSize: "0.85rem",
+                    textDecoration: "none",
+                    transition: "color 0.2s",
+                  }}
+                  className="hover:text-white"
+                >
+                  {l.label}
+                </Link>
+              ))}
             </div>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h4 style={{ color: "white", fontWeight: 700, fontSize: "0.85rem", marginBottom: 16, letterSpacing: "0.05em" }}>LEGAL</h4>
+          {/* Verticals — 3 cols */}
+          <div className="lg:col-span-3">
+            <h4
+              style={{
+                color: "rgba(255,255,255,0.5)",
+                fontWeight: 700,
+                fontSize: "0.7rem",
+                marginBottom: 20,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}
+            >
+              Verticals
+            </h4>
             <div className="flex flex-col gap-3">
-              <Link href="/privacy" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>Privacy Policy</Link>
-              <Link href="/terms" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>Terms of Service</Link>
-              <Link href="/contact" style={{ color: "rgba(255,255,255,0.4)", fontSize: "0.85rem", textDecoration: "none" }}>Contact Us</Link>
+              {links.verticals.map((v) => (
+                <span
+                  key={v}
+                  style={{
+                    color: "rgba(255,255,255,0.4)",
+                    fontSize: "0.85rem",
+                  }}
+                >
+                  {v}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Connect — 2 cols */}
+          <div className="lg:col-span-2">
+            <h4
+              style={{
+                color: "rgba(255,255,255,0.5)",
+                fontWeight: 700,
+                fontSize: "0.7rem",
+                marginBottom: 20,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}
+            >
+              Connect
+            </h4>
+            <div className="flex flex-col gap-3">
+              <a
+                href="#"
+                style={{
+                  color: "rgba(255,255,255,0.4)",
+                  fontSize: "0.85rem",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                }}
+              >
+                LinkedIn <ArrowUpRight size={12} />
+              </a>
+              <a
+                href="#"
+                style={{
+                  color: "rgba(255,255,255,0.4)",
+                  fontSize: "0.85rem",
+                  textDecoration: "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 4,
+                }}
+              >
+                Twitter <ArrowUpRight size={12} />
+              </a>
+              {links.legal.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  style={{
+                    color: "rgba(255,255,255,0.4)",
+                    fontSize: "0.85rem",
+                    textDecoration: "none",
+                  }}
+                >
+                  {l.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
 
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", marginTop: 48, paddingTop: 24, display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
-          <p style={{ color: "rgba(255,255,255,0.3)", fontSize: "0.8rem" }}>
-            © {new Date().getFullYear()} United Investing Group LLC. All rights reserved.
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.04)",
+            marginTop: 56,
+            paddingTop: 24,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
+          <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.75rem" }}>
+            &copy; {new Date().getFullYear()} United Investing Group LLC. All
+            rights reserved.
           </p>
-          <p style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.75rem" }}>
-            Registered in Wyoming, USA · Operating Globally
+          <p style={{ color: "rgba(255,255,255,0.15)", fontSize: "0.7rem" }}>
+            Registered in Wyoming, USA &middot; Operating Globally
           </p>
         </div>
       </div>

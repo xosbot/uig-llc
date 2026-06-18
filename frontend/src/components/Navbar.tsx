@@ -1,50 +1,158 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Menu, X, ArrowRight } from "lucide-react";
+
+const navItems = [
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50" style={{ background: "rgba(6,13,31,0.92)", backdropFilter: "blur(16px)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-        <Link href="/" className="flex items-center gap-3 no-underline">
-          <div style={{ width: 36, height: 36, borderRadius: 10, background: "linear-gradient(135deg,#1D4ED8,#3B82F6)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ color: "white", fontWeight: 800, fontSize: "0.85rem", fontFamily: "Space Grotesk, sans-serif" }}>UIG</span>
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      style={{
+        background: scrolled
+          ? "rgba(10,15,30,0.95)"
+          : "rgba(10,15,30,0.6)",
+        backdropFilter: "blur(20px) saturate(180%)",
+        borderBottom: scrolled
+          ? "1px solid rgba(255,255,255,0.06)"
+          : "1px solid transparent",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-[72px]">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3 no-underline group">
+          <div
+            className="transition-transform duration-300 group-hover:scale-105"
+            style={{
+              width: 40,
+              height: 40,
+              borderRadius: 12,
+              background: "linear-gradient(135deg,#1E40AF,#3B82F6)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 4px 12px rgba(30,64,175,0.3)",
+            }}
+          >
+            <span
+              style={{
+                color: "white",
+                fontWeight: 800,
+                fontSize: "0.85rem",
+                fontFamily: "Space Grotesk, sans-serif",
+                letterSpacing: "0.05em",
+              }}
+            >
+              UIG
+            </span>
           </div>
-          <div>
-            <span style={{ color: "white", fontWeight: 800, fontSize: "1.1rem", fontFamily: "Space Grotesk, sans-serif", letterSpacing: "-0.02em" }}>
+          <div className="hidden sm:block">
+            <span
+              style={{
+                color: "white",
+                fontWeight: 700,
+                fontSize: "1rem",
+                fontFamily: "Space Grotesk, sans-serif",
+                letterSpacing: "-0.02em",
+              }}
+            >
               United Investing Group
             </span>
+            <div
+              style={{
+                color: "rgba(255,255,255,0.35)",
+                fontSize: "0.65rem",
+                fontWeight: 500,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                marginTop: -2,
+              }}
+            >
+              Global Investment & Technology
+            </div>
           </div>
         </Link>
 
+        {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
-          <Link href="/about" className="nav-link">About</Link>
-          <Link href="/services" className="nav-link">Services</Link>
-          <Link href="/portfolio" className="nav-link">Portfolio</Link>
-          <Link href="/contact" className="nav-link">Contact</Link>
+          {navItems.map((item) => (
+            <Link key={item.href} href={item.href} className="nav-link">
+              {item.label}
+            </Link>
+          ))}
         </div>
 
+        {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/contact" className="btn-gold" style={{ padding: "8px 20px", fontSize: "0.875rem" }}>
+          <Link
+            href="/contact"
+            className="btn-gold"
+            style={{ padding: "10px 24px", fontSize: "0.85rem" }}
+          >
             Get in Touch
+            <ArrowRight size={14} />
           </Link>
         </div>
 
-        <button className="md:hidden" onClick={() => setOpen(!open)} style={{ background: "none", border: "none", cursor: "pointer", color: "white", padding: 4 }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? <path d="M18 6L6 18M6 6l12 12" /> : <><path d="M3 12h18" /><path d="M3 6h18" /><path d="M3 18h18" /></>}
-          </svg>
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden"
+          onClick={() => setOpen(!open)}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "white",
+            padding: 8,
+          }}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
+      {/* Mobile menu */}
       {open && (
-        <div style={{ background: "#060D1F", borderTop: "1px solid rgba(255,255,255,0.07)" }} className="md:hidden px-6 pb-6 pt-4 flex flex-col gap-4">
-          {["About", "Services", "Portfolio", "Contact"].map(item => (
-            <Link key={item} href={`/${item.toLowerCase()}`} className="nav-link text-base" onClick={() => setOpen(false)}>{item}</Link>
+        <div
+          className="md:hidden px-6 pb-6 pt-4 flex flex-col gap-1"
+          style={{
+            background: "rgba(10,15,30,0.98)",
+            borderTop: "1px solid rgba(255,255,255,0.06)",
+          }}
+        >
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="nav-link text-base block py-3"
+              onClick={() => setOpen(false)}
+              style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+            >
+              {item.label}
+            </Link>
           ))}
-          <Link href="/contact" className="btn-gold mt-2 justify-center" onClick={() => setOpen(false)}>Get in Touch</Link>
+          <Link
+            href="/contact"
+            className="btn-gold mt-4 justify-center"
+            onClick={() => setOpen(false)}
+          >
+            Get in Touch
+            <ArrowRight size={14} />
+          </Link>
         </div>
       )}
     </nav>
