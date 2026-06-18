@@ -3,12 +3,12 @@ import "./globals.css";
 import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
-  title: "ICP3A — Integrated Certified Property Precision Acquisition & Analytics",
-  description: "India's first satellite-grade property certification and acquisition platform. LPI certified. 28 airports. All major cities.",
-  keywords: "LPI certificate, property acquisition, India real estate, airport zone property, ICP3A",
+  title: "United Investing Group LLC — Global Investment & Technology",
+  description: "UIG is a diversified investment and technology company operating across real estate, HR, trade, and digital solutions — connecting India with the global economy.",
+  keywords: "United Investing Group, UIG, investment, real estate, technology, HR, global business",
   openGraph: {
-    title: "ICP3A — Every Parcel. Certified. Acquired.",
-    description: "Satellite-grade LPI certification for every 10×10m land parcel. Automated property acquisition across all Indian airport zones.",
+    title: "United Investing Group LLC — Building the Future Across Borders",
+    description: "Diversified investment and technology company operating across 40+ countries.",
     type: "website",
   },
 };
